@@ -1,0 +1,363 @@
+/*
+ * Styles for volmedo.com.
+ * Visual design based on the Galada Jekyll theme by Artem Sheludko (MIT, see /LICENSE.txt).
+ */
+
+@font-face {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/nunito-latin.woff2") format("woff2");
+}
+
+:root {
+  --primary: #227aff;
+  --primary-hover: #6fa8ff;
+  --text: #e1ebff;
+  --muted: #707890;
+  --black: #101010;
+  --background: #2c2f36;
+  --panel: rgba(35, 36, 39, 0.95);
+  --border: #3e4250;
+  --shadow: 0 9px 18px 0 rgba(0, 0, 0, 0.25);
+  --transition: 0.35s;
+}
+
+/* Base */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  color: var(--text);
+  background: var(--background);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, p, ul, hr {
+  margin: 0 0 15px;
+  padding: 0;
+}
+
+h1, h2 {
+  line-height: normal;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition), background-color var(--transition), border-color var(--transition);
+}
+
+a:hover {
+  color: var(--primary-hover);
+}
+
+hr {
+  height: 2px;
+  margin: 30px 0;
+  border: 0;
+  background-color: var(--border);
+}
+
+::selection {
+  color: #fff;
+  background-color: var(--primary);
+}
+
+.icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.logo-text {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 16px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  color: var(--text);
+}
+
+/* Header */
+
+.header {
+  margin-bottom: 50px;
+  background: var(--black);
+}
+
+.header .container {
+  display: flex;
+  align-items: center;
+  height: 60px;
+}
+
+.header .logo-text:hover {
+  color: #fff;
+}
+
+/* Keep the content panel's bottom margin from collapsing into the footer's. */
+main {
+  display: flow-root;
+}
+
+/* Hero image (home splash and 404 image) */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  background-color: var(--black);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: var(--shadow);
+}
+
+/* 2:1 aspect ratio with a minimum height, as in the original theme. */
+.hero::before {
+  content: "";
+  display: table;
+  padding-top: 50%;
+}
+
+.hero-splash {
+  min-height: 450px;
+  background-image: url("/img/splash.jpg");
+}
+
+.hero-404 {
+  min-height: 230px;
+  background-image: url("/img/04.jpg");
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero {
+    animation: fade-in 1s cubic-bezier(0.6, 0.3, 0, 1) both;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.splash-intro {
+  padding: 20px;
+  text-align: center;
+}
+
+.splash-heading {
+  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 30px;
+  font-weight: normal;
+}
+
+.splash-subheading {
+  max-width: 450px;
+  margin: 0 auto 20px;
+  font-size: 15px;
+  line-height: 23px;
+}
+
+.social-profiles {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 0;
+  list-style: none;
+}
+
+.social-profiles a {
+  display: block;
+  padding: 8px 10px;
+  font-size: 24px;
+  color: var(--text);
+  border: 1px solid var(--text);
+  border-radius: 3px;
+}
+
+.social-profiles a:hover {
+  color: #fff;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Content panel */
+
+.page {
+  margin-bottom: 20px;
+  padding: 40px 15px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.page-head, .page-body {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-head {
+  padding-bottom: 30px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 28px;
+  line-height: 28px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.page-body {
+  padding-bottom: 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Footer */
+
+.footer {
+  margin-top: 30px;
+  padding: 20px 0 30px;
+  background: var(--black);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.footer-top .logo-text:hover {
+  color: var(--muted);
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--background);
+  opacity: 0.5;
+  transition: opacity var(--transition);
+}
+
+.top:hover {
+  color: var(--text);
+  opacity: 1;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.copyright {
+  margin: 5px 60px 0 0;
+}
+
+.copyright p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--muted);
+}
+
+.copyright a, .footer-social a {
+  color: var(--muted);
+}
+
+.copyright a:hover, .footer-social a:hover {
+  color: var(--primary);
+}
+
+.footer-social ul {
+  display: flex;
+  gap: 19px;
+  margin: 0;
+  list-style: none;
+}
+
+.footer-social a {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Responsive */
+
+@media (min-width: 576px) {
+  .page {
+    padding: 40px;
+  }
+
+  .page-title {
+    margin-bottom: 10px;
+    font-size: 43px;
+    line-height: 43px;
+  }
+
+  .splash-heading {
+    font-size: 50px;
+    line-height: 45px;
+  }
+
+  .splash-subheading {
+    margin-bottom: 25px;
+    font-size: 25px;
+  }
+}
+
+@media (min-width: 768px) {
+  .page {
+    /* 10 of 12 grid columns, as in the original theme. */
+    width: calc((100% + 30px) * 10 / 12 - 30px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .splash-intro {
+    padding: 60px 40px 0;
+  }
+}
